@@ -1,14 +1,35 @@
 boolean drawACat = false;
+int buttonX = 370;
+int buttonY = 370;
+int buttonsize = 30;
+int catTailY = 200;
+int swingAmounts =3;
 void setup() {
   size(400, 400);
-  background(251, 218, 160);
-  rect(370, 370, 20, 20);
-  }
+}
 void draw() {
-  if (drawACat == true){
+  background(251, 218, 160);
+  catTailY=catTailY+swingAmounts;
+  if (catTailY<=50||catTailY>=350) {
+
+    swingAmounts=-swingAmounts;
+  }
+  noStroke();
+  fill(19, 219, 249);
+  if (mouseX-buttonX<15) {
+    if (mouseX-buttonX>-15) {
+      if (mouseY-buttonY>-15) {
+        if (mouseY-buttonY<15) {
+          fill( 11, 106, 120);
+        }
+      }
+    }
+  }
+  ellipse(buttonX, buttonY, buttonsize, buttonsize);
+  if (drawACat == true) {
     stroke(0);
     strokeWeight(20);
-    line(30, 300, 80, 220);
+    line(30, catTailY, 80, 220);
     strokeWeight(2);
     fill(153, 153, 153);
     ellipse(80, 300, 20, 100);
@@ -37,9 +58,20 @@ void draw() {
     stroke(0);
   }
 }
-void mouseClicked(){
-  println("Meow!");
-  if(drawACat == false){
-  drawACat = true;
- }
+
+void mouseClicked() {
+  if (mouseX-buttonX<=15) {
+    if (mouseX-buttonX>=-15) {
+      if (mouseY-buttonY>=-15) {
+        if (mouseY-buttonY<=15) {
+          println("Meow!");
+          if (drawACat == true) {
+            drawACat = false;
+          } else if (drawACat == false) {
+            drawACat = true;
+          }
+        }
+      }
+    }
+  }
 }
