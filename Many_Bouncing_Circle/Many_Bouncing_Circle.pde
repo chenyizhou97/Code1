@@ -13,8 +13,8 @@ void setup() {
   for (int i = 0; i<50; i++) {
     elX[i] = random(20, 480);
     elY[i] = random(20, 380);
-    elXSpeed[i] = random(1,6);
-    elYSpeed[i] = random(1,6);
+    elXSpeed[i] = random(-6, 6);
+    elYSpeed[i] = random(-6, 6);
   }
 }
 void draw() {
@@ -27,11 +27,12 @@ void draw() {
   if (value==false) {
     background(136, 255, 145);
   }
-    for (int i = 0; i<50; i++) {
-    
+  for (int i = 0; i<50; i++) {
+    //while((elX[i]<rectX-60||elX[i]>rectX+60)&&(elY[i]<rectY-30||elY[i]>rectY+30)){
+
     fill(200, 100, 150);
     ellipse(elX[i], elY[i], radius, radius);
-
+    //}
     if (value == false) {
       fill( 50, 100, 234);
       rectMode(RADIUS);
